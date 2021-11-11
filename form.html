@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Sign Up</title>
+  </head>
+  <body>
+    <!-- Sign Up -->
+    <section id="daftar">
+      <div class="container" align="center">
+        <div class="card form-daftar" >
+            <div class="card-body" >
+              <h2 class="card-title" align="center" style="color: black;">Sign Up</h2> 
+              <form name="inputan" action="" method="get">
+                <div class="input-group mb-3">
+                  <input name="nama" type="text" class="form-control" id="nama" placeholder="Nama Lengkap" autofocus >
+                  <span class="input-group-text" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                  </svg></span>
+                </div>
+                <div class="input-group mb-3">
+                  <input name="email" type="email" class="form-control" id="email" placeholder="E-mail">
+                    <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                      </svg></span>
+                </div>
+                <div class="input-group mb-3">
+                  <input type="password" name="password" class="form-control" id="password" placeholder="Password" onChange="onChange()" >
+                  <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                    <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                  </svg></span>
+                </div>
+                <div class="input-group mb-3">
+                  <input type="password" name="confirm" class="form-control" id="confirm_password" placeholder="Retype password" onChange="onChange()" >
+                  <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                    <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                  </svg></span>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="sk" >
+                    <label class="form-check-label text-start" for="exampleCheck1" style="color: black;"><font style="font-size: 13px;">Saya Menyetujui Syarat dan Ketentuan</font></label>
+                  </div>
+                <div class="d-grid">
+                <button class="btn btn-danger" type="submit" onclick="alert('Registration Successfull')" aria-label="Close">Submit</button>
+                </div>
+                <div>
+                    <label><a href="index.html" class="Link" style="color: black;">Back to Home</a></label>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--akhir sign up-->
+    <!---awal javascript-->
+    <script>
+       const nama = document.getElementById("nama");
+      const email = document.getElementById("email");
+      const pass = document.getElementById("password");
+      const confirmPass = document.getElementById("confirm_password");
+      const submitButton = document.getElementById("submit");
+
+      function changeLine (fromInput, toInput) {
+      fromInput.addEventListener("keypress", function onEvent(event){
+         if(event.key == "Enter"){
+            event.preventDefault();
+            toInput.focus();
+          }
+        });
+      }
+
+      changeLine(nama, email);
+      changeLine(email, pass);
+      changeLine(pass, confirmPass);
+
+      function validatePassword(){
+        if(pass.value != confirmPass.value){
+          confirmPass.setCustomValidity("Password Don't Match");
+        } else {
+         confirmPass.setCustomValidity("");
+        }
+      }
+
+      pass.onchange = validatePassword;
+      confirmPass.onkeyup = validatePassword;
+    </script>
+    <!-- akhir javascript-->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"> </script>
+  </body>
+</html>
